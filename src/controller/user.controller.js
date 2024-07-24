@@ -92,3 +92,21 @@ export function deleteUserById(req,res) {
 		response.status(404).send(e.message);
     }
 }
+
+export const updateUserById = (req,res) => {
+    const userID = req.params.id;
+
+    try{
+        let indexUserParaAtualizar = users.findIndex((User) => User.id == userID) 
+        if(indexUserParaAtualizar == -1){
+            throw new Error("Not found");
+        }
+
+        let userAtualizado = req.body;
+
+        users[indexUserParaAtualizar] = userAtualizado;
+        res.status(200).send({message: "User atualizado con sucesso", userAtualizado})
+    } catch (e){
+        res.status(404).send({error: e.message,})
+    }
+};
