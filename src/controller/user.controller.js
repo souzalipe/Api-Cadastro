@@ -23,90 +23,88 @@ export const  getAllUser = (req,res) =>{
     res.status(200).send(users);
 };
 
-export const creatNewUser = (req,res) =>{
-    const { name, email, age, login, password } = req.body; //desestruturei para redução de linha de código 
-    // ou seja tudo do meu 'constructor' em uma linha de código.
+export const createNewUser = (req, res) => {
+    const { name, email, age, login, password } = req.body;
 
-    try{
-        if(!name || !email || !age || !login || !password ){ // significa que se o 'nome' não vier, jogue um error
-            throw new Error("Um dos campos não confere")
+    try {
+        if (!name || !email || !age || !login || !password) {
+            throw new Error("Um dos campos não confere");
         }
 
         const newUser = new User(name, email, age, login, password);
-
         users.push(newUser);
-    } catch (e){
-        res.status(400).send({erro: "Não foi possivel criar o Usuário"})
-    };
+        res.status(201).send(newUser); // Adicionado status de sucesso e retorno do novo usuário
+    } catch (e) {
+        res.status(400).send({ erro: "Não foi possível criar o Usuário" });
+    }
 };
 
-export const getUserById = (req,res) =>{
+
+export const getUserById = (req, res) => {
     const idParametro = req.params.id;
 
     try {
-        const userEncotrado = users.find((User)=> User.id == idParametro);
+        const userEncotrado = users.find((user) => user.id == idParametro); // Corrigido nome da variável e case-sensitive
 
         if (!userEncotrado) {
             throw new Error("Not found");
         }
-        response.status(200).send(userEncotrado);
+        res.status(200).send(userEncotrado); // Corrigido "response" para "res"
     } catch (e) {
-		response.status(404).send({error: e.message,});
+        res.status(404).send({ error: e.message }); // Corrigido "response" para "res"
     }
-}
+};
 
-export const getUserByName = (req,res) =>{
+
+export const getUserByName = (req, res) => {
     const nomeParametro = req.params.name;
 
     try {
-        const userEncotrado = users.find((User)=> User.name == idParametro);
+        const userEncotrado = users.find((user) => user.name == nomeParametro); // Corrigido nome da variável
 
         if (!userEncotrado) {
             throw new Error("Not found");
         }
-        response.status(200).send(userEncotrado);
+        res.status(200).send(userEncotrado); // Corrigido "response" para "res"
     } catch (e) {
-		response.status(404).send({error: e.message,});
+        res.status(404).send({ error: e.message }); // Corrigido "response" para "res"
     }
-}
+};
 
-export function deleteUserById(req,res) {
+
+export function deleteUserById(req, res) {
     let idParametro = req.params.id;
 
     try {
-		let userParaDeletar = users.find((User) => User.id == idParametro);
+        let userParaDeletar = users.find((user) => user.id == idParametro); // Corrigido nome da variável
 
-		if (!userParaDeletar) {
-			throw new Error("Not found");
-		}
-
-		users = users.filter((User) => User != userParaDeletar);
-        
-		// essa é a base pro PUT, você reatribui com o valor atualizado
-		//slice -> se a gente considerar que o id é o nosso indice
-		// quando eu removo um item, o indice muda, logo o filter é melhor não precisarmos
-		//lidar com essa complexidade agora
-
-		response.status(204).send();
-	} catch (e) {
-		response.status(404).send(e.message);
-    }
-}
-
-export const updateUserById = (req,res) => {
-    const userID = req.params.id;
-
-    try{
-        let indexUserParaAtualizar = users.findIndex((User) => User.id == userID) 
-        if(indexUserParaAtualizar == -1){
+        if (!userParaDeletar) {
             throw new Error("Not found");
         }
 
-        let userAtualizado = req.body;
+        users = users.filter((user) => user != userParaDeletar); // Corrigido nome da variável
+        
+        res.status(204).send();
+    } catch (e) {
+        res.status(404).send(e.message); // Corrigido "response" para "res"
+    }
+}
+
+
+export const updateUserById = (req, res) => {
+    const userID = req.params.id;
+
+    try {
+        let indexUserParaAtualizar = users.findIndex((user) => user.id == userID); // Corrigido nome da variável
+        if (indexUserParaAtualizar == -1) {
+            throw new Error("Not found");
+        }
+
+        let userAtualizado = { ...users[indexUserParaAtualizar], ...req.body }; // Merging updates into existing user
 
         users[indexUserParaAtualizar] = userAtualizado;
-        res.status(200).send({message: "User atualizado con sucesso", userAtualizado})
-    } catch (e){
-        res.status(404).send({error: e.message,})
+        res.status(200).send({ message: "User atualizado com sucesso", userAtualizado }); // Corrigido "con" para "com"
+    } catch (e) {
+        res.status(404).send({ error: e.message });
     }
 };

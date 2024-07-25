@@ -1,4 +1,4 @@
-import { getAllUser, getUserById,getUserByName,creatNewUser,deleteUserById,updateUserById } from "../controller/user.controller.js";
+import { getAllUser, getUserById,getUserByName,createNewUser,deleteUserById,updateUserById } from "../controller/user.controller.js";
 import { Router } from "express";
 
 const  userRouter = Router();
@@ -6,7 +6,7 @@ const  userRouter = Router();
 userRouter.get("/user/all", getAllUser);
 userRouter.get("/user/:id", getUserById)
 userRouter.get("/user/name/:name", getUserByName);
-userRouter.get("/user/new", creatNewUser);
+userRouter.post("/user/new", createNewUser);
 userRouter.delete("/user/delete/:id", deleteUserById);
 userRouter.put("/user/upade/:id",updateUserById);
 
