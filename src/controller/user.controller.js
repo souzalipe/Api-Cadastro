@@ -27,7 +27,7 @@ export const createNewUser = (req, res) => {
     const { name, email, age, login, password } = req.body;
 
     try {
-        if (!name || !email || !age || !login || !password) {
+        if (!name) { // pelo visto nao se pode fazer de vários jeitos 
             throw new Error("Um dos campos não confere");
         }
 
