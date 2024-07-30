@@ -1,12 +1,19 @@
-let idAuto = 1; //coloquei para um id autoincrementavel. 
+import sequelize from "../database/config.js"
+import { DataTypes } from "sequelize"; // DataType para colocar na tabela
 
-export class User {
-    constructor(name,email,age,login,password){ // Não é precisso colocar o 'id' no cronstructor.
-        this.id = idAuto++;
-        this.name = name;
-        this.email = email;
-        this.agr = age;
-        this.login = login;
-        this.password = password;
+const User = sequelize.define("User",{
+    id: {
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    age: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
     }
-}
+});
+
+export { User };
