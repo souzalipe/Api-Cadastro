@@ -4,7 +4,8 @@ import { DataTypes } from "sequelize"; // DataType para colocar na tabela
 const User = sequelize.define("User",{
     id: {
         type: DataTypes.NUMBER,
-        primaryKey: true,
+		primaryKey: true,
+		autoIncrement: true,
     },
     name: {
         type: DataTypes.STRING,
