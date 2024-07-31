@@ -16,7 +16,7 @@ sequelize
 	.sync()
 	.then(() => {
 		app.listen(Port, () => {
-			console.log(`A aplicação está rodando na porta http://localhost:${Port}`);
+			console.log(`A aplicação está rodando na porta  http://localhost:${Port}`);
 		});
 	})
 	.catch((erro) => {
