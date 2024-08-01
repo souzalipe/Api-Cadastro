@@ -15,29 +15,24 @@ const Port = 3000;
 // Nodemailer 
 
 const transport = nodemailer.createTransport({
-	host:'',
+	host:'smtp.gmail.com',
 	port: 465,
 	secure: true,
 	auth: {
-		user: '', // meu email aqui 
-		pass: '' //senha do seu email gerado pelo google
+		user: 'fn23886@gmail.com', // meu email aqui 
+		pass: 'ovyc itfi gqdu bkzx' //senha do seu email gerado pelo google
 	}
 });
 
 transport.sendMail({
-	from: 'NonoProjetos <>', //deve passar o mesmo email do remetente 
-	to: 'fn23886@gmail.com',
+	from: 'NonoProjetos <fn23886@gmail.com>', //deve passar o mesmo email do remetente 
+	to: 'rrobotinho@gmail.com>',
 	subject: 'Enviado email com Nodemailer',
 	html: '<h1>Olá, Seja bem vindo ao Nodemailer Felipe</h1>',
 	text: 'Estou usando Nodemailer boy',
 })
 .then(()=> console.log("Email enviado boy"))
 .catch((err)=>console.log('Erro ao enviar email: ', err));
-
-
-
-
-
 
 // Sincronia de Dados
  
