@@ -15,7 +15,7 @@ const Port = 3000;
 // Nodemailer 
 
 const transport = nodemailer.createTransport({
-	host:'smtp.gmail.com',
+	host:'smtp.gmail.com', 
 	port: 465,
 	secure: true,
 	auth: {
@@ -25,11 +25,11 @@ const transport = nodemailer.createTransport({
 });
 
 transport.sendMail({
-	from: 'NonoProjetos <fn23886@gmail.com>', //deve passar o mesmo email do remetente 
+	from: 'Gotas do Amanhã <fn23886@gmail.com>', //deve passar o mesmo email do remetente 
 	to: 'rrobotinho@gmail.com>',
-	subject: 'Enviado email com Nodemailer',
-	html: '<h1>Olá, Seja bem vindo ao Nodemailer Felipe</h1>',
-	text: 'Estou usando Nodemailer boy',
+	subject: 'Seja Bem vindo ao Gotas do Amanhã',
+	html: '<h1>Olá, Seja bem vindo ao Gotas do Amanhã Felipe</h1>',
+	text: 'Estou Gotas do Amanhã',
 })
 .then(()=> console.log("Email enviado boy"))
 .catch((err)=>console.log('Erro ao enviar email: ', err));
