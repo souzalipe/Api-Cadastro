@@ -10,7 +10,7 @@ app.use(express.json()); // -> middlewear de conversão para json
 
 app.use(userRouter);
 
-const Port = 3000;
+const Port = process.env.Port || 3000;
 
 // Nodemailer 
 
