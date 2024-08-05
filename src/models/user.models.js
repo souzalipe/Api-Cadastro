@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize"; // DataType para colocar na tabela
 
 const User = sequelize.define("User",{
     id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
 		primaryKey: true,
 		autoIncrement: true,
     },
@@ -12,7 +12,7 @@ const User = sequelize.define("User",{
         allowNull: false,
     },
     age: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     }
 });
