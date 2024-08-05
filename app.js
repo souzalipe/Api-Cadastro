@@ -39,8 +39,8 @@ const Port = process.env.Port || 3000;
 sequelize
 	.sync()
 	.then(() => {
-		app.listen(Port, () => {
-			console.log(`A aplicação está rodando na porta  http://localhost:${Port}`);
+		app.listen(3000, () => {
+			console.log(`A aplicação está rodando na porta  http://localhost:${3000}`);
 		});
 	})
 	.catch((erro) => {

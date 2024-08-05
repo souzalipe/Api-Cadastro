@@ -1,12 +1,12 @@
 import { request, response } from "express";
 import { User } from "../models/user.models.js";
 
-export const  getAllUser = async (req,res) =>{
+export const getAllUser = async (req,res) =>{
     try {
         const users = await User.findAll() // find all: vai pagar todos os usuários de User
-        response.status(200).send(users);
+        res.status(200).send(users);
     } catch {
-        response.status(500).send({
+        res.status(500).send({
             error: "Não foi possivel encontrar os usuários",
         });
     }
@@ -15,14 +15,14 @@ export const  getAllUser = async (req,res) =>{
 export const createNewUser = async (req, res) => {
 
     try {
-        const newUser = request.body;
+        const newUser = req.body;
         const userCriado = await User.create(newUser);
-        response.status(201).send({
+        res.status(201).send({
             message: "User criado com sucesso",
             novoUser: userCriado,
         })
     } catch {
-        response.status(500).send({ error: "Não foi possível criar um Usuario" });
+        res.status(500).send({ error: "Não foi possível criar um Usuario" });
     }
 };
 
@@ -30,7 +30,7 @@ export const createNewUser = async (req, res) => {
 export const getUserById = async (req, res) => {
 
     try {
-        const idParametro = request.params.id
+        const idParametro = req.params.id
         const userEncontrado = await User.findByPk(idParametro)
         res.status(200).send(userEncontrado); // Corrigido "response" para "res"
     } catch {
@@ -39,7 +39,7 @@ export const getUserById = async (req, res) => {
 };
 
 export const deleteUserById = async (req, res) =>{
-    let idParametro = request.params.id;
+    let idParametro = req.params.id;
 
 	try {
 		let userParaDeletar = await User.findByPk(idParametro)
@@ -61,7 +61,7 @@ export const updateUserById = async (req, res) => {
     const idParametro = request.params.id;
 
 	try {
-		const userDaRequest = request.body
+		const userDaRequest = req.body
 		const userParaAtualizar = await User.findByPk(idParametro)
 
 		if (!userParaAtualizar) {
@@ -70,13 +70,13 @@ export const updateUserById = async (req, res) => {
 		//atualizo ele com o método update
 		const userAtualizado = await userParaAtualizar.update(userDaRequest)
 
-		response.status(201).send({
+		res.status(201).send({
 			message: "Usuário criado com suceso",
 			userAtualizado,
 		});
 
 	} catch (e) {
-		response.status(404).send({
+		res.status(404).send({
 			error: e.message,
 		});
 	}
