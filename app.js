@@ -1,18 +1,24 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import sequelize from './src/database/config.js'; // importei o sequelize
+import swaggerUi from 'swagger-ui-express';
+import swaggerConfig from './swaggerConfig.js'; // Certifique-se que o caminho está correto
 import { userRouter } from './src/router/user.router.js';
 
 const app = express();
 
+app.use(express.json()); // Middleware de conversão para JSON
 
-app.use(express.json()); // -> middlewear de conversão para json 
+// <<< Swagger >>>
+swaggerConfig(app);
 
-app.use(userRouter);
+// <<< Rotas >>>
+app.use('/api', userRouter);
 
 const Port = process.env.Port || 3000;
 
-// <<< Nodemailer >>> 
+// <<< Nodemailer >>>
+// Código do Nodemailer (mantido comentado, caso não esteja sendo usado no momento)
 
 // const transport = nodemailer.createTransport({
 // 	host:'smtp.gmail.com', 
@@ -20,27 +26,27 @@ const Port = process.env.Port || 3000;
 // 	secure: true,
 // 	auth: {
 // 		user: 'fn23886@gmail.com', // meu email aqui 
-// 		pass: 'ovyc itfi gqdu bkzx' //senha do seu email gerado pelo google
+// 		pass: 'ovyc itfi gqdu bkzx' // senha do seu email gerado pelo google
 // 	}
 // });
 
 // transport.sendMail({
-// 	from: 'teste <fn23886@gmail.com>', //deve passar o mesmo email do remetente 
+// 	from: 'teste <fn23886@gmail.com>', // deve passar o mesmo email do remetente 
 // 	to: 'rrobotinho@gmail.com>',
 // 	subject: 'Seja Bem vindo ao Gotas do Amanhã',
 // 	html: '<h1>Olá, Seja bem vindo ao Gotas do Amanhã Felipe</h1>',
 // 	text: 'Estou Gotas do Amanhã',
 // })
-// .then(()=> console.log("Email enviado boy"))
-// .catch((err)=>console.log('Erro ao enviar email: ', err));
+// .then(() => console.log("Email enviado boy"))
+// .catch((err) => console.log('Erro ao enviar email: ', err));
 
 // <<< Sincronia de Dados >>>
- 
 sequelize
 	.sync()
 	.then(() => {
-		app.listen(3000, () => {
-			console.log(`A aplicação está rodando na porta  http://localhost:${3000}`);
+		app.listen(Port, () => {
+			console.log(`A aplicação está rodando na porta http://localhost:${Port}`);
+			console.log(`Documentação disponível em http://localhost:${Port}/api-docs`);
 		});
 	})
 	.catch((erro) => {
