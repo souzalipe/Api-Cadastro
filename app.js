@@ -1,12 +1,11 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
-import sequelize from './src/database/config.js'; // importei o sequelize
-import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from './swaggerConfig.js'; // Certifique-se que o caminho está correto
+import sequelize from './src/database/config.js'; // importei o sequelize
 import { userRouter } from './src/router/user.router.js';
 
 const app = express();
-
+const Port = process.env.Port || 3000;
 app.use(express.json()); // Middleware de conversão para JSON
 
 // <<< Swagger >>>
@@ -14,8 +13,6 @@ swaggerConfig(app);
 
 // <<< Rotas >>>
 app.use('/api', userRouter);
-
-const Port = process.env.Port || 3000;
 
 // <<< Nodemailer >>>
 // Código do Nodemailer (mantido comentado, caso não esteja sendo usado no momento)
