@@ -52,7 +52,7 @@ export const deleteUserById = async (req, res) =>{
 
 		response.status(204).send();
 	} catch (e) {
-		response.status(404).send(e.message);
+		res.status(404).send(e.message);
 	}
 }
 
