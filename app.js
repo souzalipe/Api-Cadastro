@@ -1,15 +1,15 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
-import swaggerConfig from './swaggerConfig.js'; // Certifique-se que o caminho está correto
 import sequelize from './src/database/config.js'; // importei o sequelize
 import { userRouter } from './src/router/user.router.js';
+import { setupSwagger } from './src/docs/swaggerConfig.js'
 
 const app = express();
 const Port = process.env.Port || 3000;
 app.use(express.json()); // Middleware de conversão para JSON
 
 // <<< Swagger >>>
-swaggerConfig(app);
+setupSwagger(app)
 
 // <<< Rotas >>>
 app.use('/api', userRouter);

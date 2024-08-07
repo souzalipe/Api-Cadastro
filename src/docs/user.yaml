@@ -1,0 +1,36 @@
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - nome
+        - idade
+      properties:
+        id:
+          type: integer
+          description: Id do Usuário, gerado automaticamente
+        nome:
+          type: string
+          description: Nome do Usuário
+        idade:
+          type: integer
+          description: Idade do Usuário
+      example:
+        id: 1
+        nome: lucas
+        idade: 54
+        
+paths:
+  /user/all:
+    get:
+      summary: Endpoint responsável por listar todos os Usuários
+      tags: [Users]
+      responses:
+        200:
+          description: Lista de todos os Usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
