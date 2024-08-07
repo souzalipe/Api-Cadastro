@@ -1,8 +1,8 @@
-import { Sequelize } from "sequelize"; //importei o sequelize neste caso é copia e cola 
+import { Sequelize } from "sequelize"; 
 
 const sequelize = new Sequelize({
 	dialect: "sqlite",
-	storage: "./src/database/database-sqlite.db",// onde nós queremos CRIAR o arquivo do banco de dados
+	storage: "./src/database/database-sqlite.db",
 });
 
 export default sequelize;

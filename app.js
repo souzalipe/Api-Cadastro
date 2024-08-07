@@ -1,6 +1,6 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
-import sequelize from './src/database/config.js'; // importei o sequelize
+import sequelize from './src/database/config.js'; 
 import { userRouter } from './src/router/user.router.js';
 import { setupSwagger } from './src/docs/swaggerConfig.js'
 
@@ -8,13 +8,13 @@ const app = express();
 const Port = process.env.Port || 3000;
 app.use(express.json()); // Middleware de conversão para JSON
 
-// <<< Swagger >>>
+
 setupSwagger(app)
 
-// <<< Rotas >>>
+
 app.use('/api', userRouter);
 
-// <<< Nodemailer >>>
+
 // Código do Nodemailer (mantido comentado, caso não esteja sendo usado no momento)
 
 // const transport = nodemailer.createTransport({
@@ -37,7 +37,7 @@ app.use('/api', userRouter);
 // .then(() => console.log("Email enviado boy"))
 // .catch((err) => console.log('Erro ao enviar email: ', err));
 
-// <<< Sincronia de Dados >>>
+
 sequelize
 	.sync()
 	.then(() => {

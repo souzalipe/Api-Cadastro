@@ -3,7 +3,7 @@ import { User } from "../models/user.models.js";
 
 export const getAllUser = async (req,res) =>{
     try {
-        const users = await User.findAll() // find all: vai pagar todos os usuários de User
+        const users = await User.findAll() 
         res.status(200).send(users);
     } catch {
         res.status(500).send({
@@ -32,9 +32,9 @@ export const getUserById = async (req, res) => {
     try {
         const idParametro = req.params.id
         const userEncontrado = await User.findByPk(idParametro)
-        res.status(200).send(userEncontrado); // Corrigido "response" para "res"
+        res.status(200).send(userEncontrado); 
     } catch {
-        res.status(404).send({ error: e.message }); // Corrigido "response" para "res"
+        res.status(404).send({ error: e.message }); 
     }
 };
 

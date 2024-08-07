@@ -1,5 +1,5 @@
 import sequelize from "../database/config.js"
-import { DataTypes } from "sequelize"; // DataType para colocar na tabela
+import { DataTypes } from "sequelize"; 
 
 const User = sequelize.define("User",{
     id: {

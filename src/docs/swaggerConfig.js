@@ -4,10 +4,10 @@ import YAML from "yamljs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-const __filename = fileURLToPath(import.meta.url); // obtem o diretório 
+const __filename = fileURLToPath(import.meta.url); 
 const __dirname = dirname(__filename);
 
-const userDocs = YAML.load(`${__dirname}/user.yaml`); // carrega o arquivo YARML
+const userDocs = YAML.load(`${__dirname}/user.yaml`); 
 
 
 const options = {
