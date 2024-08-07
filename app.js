@@ -6,7 +6,7 @@ import { setupSwagger } from './src/docs/swaggerConfig.js'
 
 const app = express();
 const Port = process.env.Port || 3000;
-app.use(express.json()); // Middleware de conversão para JSON
+app.use(express.json()); 
 
 
 setupSwagger(app)
