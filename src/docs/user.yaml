@@ -1,3 +1,8 @@
+openapi: 3.0.0
+info:
+  title: API de Usuários
+  version: 1.0.0
+  description: API para gerenciar usuários
 components:
   schemas:
     User:
@@ -17,9 +22,9 @@ components:
           description: Idade do Usuário
       example:
         id: 1
-        nome: lucas
+        nome: Lucas
         idade: 54
-        
+
 paths:
   /user/all:
     get:
@@ -34,3 +39,154 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
+              examples:
+                example-1:
+                  value:
+                    - id: 1
+                      nome: Lucas
+                      idade: 54
+                    - id: 2
+                      nome: Maria
+                      idade: 30
+        500:
+          description: Erro no servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Não foi possivel encontrar os usuários
+
+  /user/{id}:
+    get:
+      summary: Endpoint responsável por obter um Usuário pelo ID
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Usuário encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        404:
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+
+  /user/new:
+    post:
+      summary: Endpoint responsável por criar um novo Usuário
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              nome: João
+              idade: 25
+      responses:
+        201:
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User criado com sucesso
+                  novoUser:
+                    $ref: "#/components/schemas/User"
+        500:
+          description: Erro no servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Não foi possível criar um Usuario
+
+  /user/delete/{id}:
+    delete:
+      summary: Endpoint responsável por deletar um Usuário pelo ID
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Usuário deletado com sucesso
+        404:
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+
+  /user/update/{id}:
+    put:
+      summary: Endpoint responsável por atualizar um Usuário pelo ID
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              nome: João Atualizado
+              idade: 26
+      responses:
+        201:
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Usuário atualizado com sucesso
+                  userAtualizado:
+                    $ref: "#/components/schemas/User"
+        404:
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found

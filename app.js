@@ -22,19 +22,19 @@ app.use('/api', userRouter);
 // 	port: 465,
 // 	secure: true,
 // 	auth: {
-// 		user: 'fn23886@gmail.com', // meu email aqui 
-// 		pass: 'ovyc itfi gqdu bkzx' // senha do seu email gerado pelo google
+// 		user: 'fn23886@gmail.com', 
+// 		pass: 'ovyc itfi gqdu bkzx' 
 // 	}
 // });
 
 // transport.sendMail({
-// 	from: 'teste <fn23886@gmail.com>', // deve passar o mesmo email do remetente 
-// 	to: 'rrobotinho@gmail.com>',
-// 	subject: 'Seja Bem vindo ao Gotas do Amanhã',
-// 	html: '<h1>Olá, Seja bem vindo ao Gotas do Amanhã Felipe</h1>',
-// 	text: 'Estou Gotas do Amanhã',
+// 	from: 'Api de Gerenciamento de Usuários<fn23886@gmail.com>', 
+// 	to: 'rrobotinho@gmail.com>', 
+// 	subject: 'Seja Bem vindo a Api de Gerenciamento de Usuários',
+// 	html: '<h1>Olá, veja toda a documentação da Api por aqui!!<a href="http://localhost:3000/api-docs">Documentação Api-Cadastro<a/></h1>',
+// 	text: 'Seja bem vindo a Api de Gerenciamento de Usuários.',
 // })
-// .then(() => console.log("Email enviado boy"))
+// .then(() => console.log("Email enviado com sucesso!"))
 // .catch((err) => console.log('Erro ao enviar email: ', err));
 
 
