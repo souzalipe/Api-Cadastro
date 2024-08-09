@@ -29,7 +29,7 @@ app.use('/api', userRouter);
 
 // transport.sendMail({
 // 	from: 'Api de Gerenciamento de Usuários<fn23886@gmail.com>', 
-// 	to: 'rrobotinho@gmail.com>', 
+// 	to: 'rrobotinho@gmail.com>', <<<<<----------------------------- Insira seu email aqui e receba a documentação swagger.
 // 	subject: 'Seja Bem vindo a Api de Gerenciamento de Usuários',
 // 	html: '<h1>Olá, veja toda a documentação da Api por aqui!!<a href="http://localhost:3000/api-docs">Documentação Api-Cadastro<a/></h1>',
 // 	text: 'Seja bem vindo a Api de Gerenciamento de Usuários.',
