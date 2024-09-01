@@ -18,25 +18,25 @@ app.use('/api', userRouter);
 
 // Código do Nodemailer (mantido comentado, caso não esteja sendo usado no momento)
 
-// const transport = nodemailer.createTransport({
-// 	host:'smtp.gmail.com', 
-// 	port: 465,
-// 	secure: true,
-// 	auth: {
-// 		user: 'fn23886@gmail.com', 
-// 		pass: 'ovyc itfi gqdu bkzx' 
-// 	}
-// });
+const transport = nodemailer.createTransport({
+	host:'smtp.gmail.com', 
+	port: 465,
+	secure: true,
+	auth: {
+		user: 'fn23886@gmail.com', 
+		pass: 'ovyc itfi gqdu bkzx' 
+	}
+});
 
-// transport.sendMail({
-// 	from: 'Api de Gerenciamento de Usuários<fn23886@gmail.com>', 
-// 	to: 'rrobotinho@gmail.com>', <<<<<----------------------------- Insira seu email aqui e receba a documentação swagger.
-// 	subject: 'Seja Bem vindo a Api de Gerenciamento de Usuários',
-// 	html: '<h1>Olá, veja toda a documentação da Api por aqui!!<a href="http://localhost:3000/api-docs">Documentação Api-Cadastro<a/></h1>',
-// 	text: 'Seja bem vindo a Api de Gerenciamento de Usuários.',
-// })
-// .then(() => console.log("Email enviado com sucesso!"))
-// .catch((err) => console.log('Erro ao enviar email: ', err));
+transport.sendMail({
+	from: 'Api de Gerenciamento de Usuários<fn23886@gmail.com>', 
+	 to: 'rrobotinho@gmail.com>', //<<<<<----------------------------- Insira seu email aqui e receba a documentação swagger.
+	subject: 'Seja Bem vindo a Api de Gerenciamento de Usuários',
+	html: '<h1>Olá, veja toda a documentação da Api por aqui!!<a href="http://localhost:3000/api-docs">Documentação Api-Cadastro<a/></h1>',
+	text: 'Seja bem vindo a Api de Gerenciamento de Usuários.',
+})
+.then(() => console.log("Email enviado com sucesso!"))
+.catch((err) => console.log('Erro ao enviar email: ', err));
 
 
 sequelize
