@@ -1,8 +1,15 @@
-import { DESCRIBE } from "sequelize/lib/query-types";
+import { app } from "../../app";
+import  request  from "supertest";
+import { User } from "../models/user.models.js";
 
-DESCRIBE('Teste de rotas e respostas', () => {
+jest.mock("../models/user.models.js");
 
-    test('deve retornar a resposta', ()=>{
-        expect()
+describe('Teste de rotas e respostas', () => {
+
+    test('deve retornar a resposta', async ()=>{
+        const mockUsersResponse = []
+        User.findAll.mockResolvedValue(mockUsersResponse)
+        const resposta = await request(app).get("/api/user/all")
+        expect(resposta.status).toBe(200)
     })
 })

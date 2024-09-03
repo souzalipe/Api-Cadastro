@@ -5,7 +5,7 @@ import corsConfig from './src/config/corsConfig.js';
 import { userRouter } from './src/router/user.router.js';
 import { setupSwagger } from './src/docs/swaggerConfig.js'
 
-const app = express();
+export const app = express();
 const Port = process.env.Port || 3000;
 app.use(express.json()); 
 app.use(corsConfig)
@@ -50,3 +50,4 @@ sequelize
 	.catch((erro) => {
 		console.error("Não foi possível conectar no banco de dados", erro);
 	});
+

@@ -1,13 +1,15 @@
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from 'swagger-ui-express'
+import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import path from "path";
 
-const __filename = fileURLToPath(import.meta.url); 
-const __dirname = dirname(__filename);
+const currentDirectory = path.resolve(); // ela tá obtendo o nosso diretório atual
+const userDocsPath = path.join(currentDirectory, "src/docs/user.yaml");
+const userDocs = YAML.load(userDocsPath);
 
-const userDocs = YAML.load(`${__dirname}/user.yaml`); 
+
+
+
 
 
 const options = {
