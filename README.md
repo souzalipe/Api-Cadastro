@@ -1,8 +1,8 @@
-<img  width=100% src="https://capsule-render.vercel.app/api?type=waving&color=1E90FF&height=120&section=header"/>
+<img  width=100% src="https://capsule-render.vercel.app/api?type=waving&color=3498db&height=120&section=header"/>
 
-## Projeto Elo-Vivo 🧩 
+## Cadastro de Usuários 🧑🏾👧🏾 
 
-Este projeto full-stack crud que tem como objetivo melhorar a comunidade autista trazendo implementações para a mesma.
+Este projeto API CRUD que tem como objetivo melhorar o gerenciamento de usuários.
 
 ### Estrutura de Arquivos 📄
 
@@ -199,4 +199,4 @@ Se desejar contribuir com o projeto, siga os passos abaixo:
 ## Licença
 
 © *Felipe Nascimento*. 
-<img  width=100% src="https://capsule-render.vercel.app/api?type=waving&color=1E90FF&height=120&section=footer"/>
+<img  width=100% src="https://capsule-render.vercel.app/api?type=waving&color=3498db&height=120&section=footer"/>
